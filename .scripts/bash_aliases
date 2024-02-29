@@ -1,0 +1,7 @@
+#! /usr/bin/bash
+
+alias kssh='kitty +kitten ssh --kitten=color_scheme=kanagawa -t'
+alias lsa='ls -latrh'
+alias fman='compgen -c | fzf | xargs man'
+alias ..='cd ..'
+

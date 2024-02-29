@@ -1,0 +1,14 @@
+#! /usr/bin/bash
+
+dirname="$HOME/.scripts/"
+
+files_to_source=("bash_aliases")
+
+for file in "${files_to_source[@]}"
+do
+    if [ -f "$dirname$file" ]; then
+        source "$dirname$file"
+    else
+        echo "File not found: $dirname$file"
+    fi
+done
