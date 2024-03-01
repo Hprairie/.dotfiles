@@ -19,11 +19,11 @@ require("lazy").setup({
     -------------- Navigation ---------------
 
     -- Setup Telescope
-    {'nvim-telescope/telescope.nvim', 
+    {'nvim-telescope/telescope.nvim',
         tag = '0.1.5',
         dependencies = { {'nvim-lua/plenary.nvim'} }
     },
-    
+
     -- Setup Harpoon
     'ThePrimeagen/harpoon',
 
@@ -50,7 +50,7 @@ require("lazy").setup({
         { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
         { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
       },
-      lazy = false 
+      lazy = false
     },
 
     ---------------- Asthetics ----------------
@@ -63,24 +63,30 @@ require("lazy").setup({
     {'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate'
     },
-    
 
     --------------- Rendering -----------------
     -- Image loading in nvim
-    
 
     ---------------- LaTeX -------------------
 
 
     --------------- Formatting ----------------
     -- Python Pep-8
-    {'Vimjas/vim-python-pep8-indent', 
+    {'Vimjas/vim-python-pep8-indent',
         lazy = true,
     },
+
+    -- Black
 
     ------------ Quality of Life --------------
     'tpope/vim-surround', -- Goat plugin
     'tpope/vim-repeat',
+    {'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+        -- use opts = {} for passing setup options
+        -- this is equalent to setup({}) function
+    },
     {'folke/neodev.nvim',
         lazy = true
     },
@@ -99,8 +105,15 @@ require("lazy").setup({
           -- Autocompletion
           {'hrsh7th/nvim-cmp'},
           {'hrsh7th/cmp-nvim-lsp'},
-          {'L3MON4D3/LuaSnip'},
+          {'L3MON4D3/LuaSnip',
+                -- follow latest release.
+                version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+                -- install jsregexp (optional!).
+                build = "make install_jsregexp",
+                dependencies = {
+                    {'saadparwaiz1/cmp_luasnip'},
+                }
+          },
         }
     },
-
 })

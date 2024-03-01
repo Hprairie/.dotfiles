@@ -17,7 +17,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'rust_analyzer', 'jedi_language_server', 'texlab'},
+  ensure_installed = {'rust_analyzer', 'jedi_language_server', 'texlab', 'lua_ls'},
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
@@ -30,17 +30,29 @@ require('mason-lspconfig').setup({
 })
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
   sources = {
     {name = 'path'},
     {name = 'nvim_lsp'},
     {name = 'nvim_lua'},
+    {name = 'luasnip'},
   },
   formatting = lsp_zero.cmp_format(),
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  completion = {
+      autocomplete = false
+  },
   mapping = cmp.mapping.preset.insert({
-        ['<c-y>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<Tab>'] = cmp_action.tab_complete(),
+        ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
+        ['<A-f>'] = cmp_action.luasnip_jump_forward(),
+        ['<A-b>'] = cmp_action.luasnip_jump_backward(),
         ['<c-b>'] = cmp.mapping.scroll_docs(-4),
         ['<c-f>'] = cmp.mapping.scroll_docs(4),
         ['<c-n>'] = function()
