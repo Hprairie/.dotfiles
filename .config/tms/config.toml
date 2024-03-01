@@ -1,0 +1,7 @@
+[[search_dirs]]
+path = "/home/prairie/Documents"
+depth = 10
+
+[[search_dirs]]
+path = "/home/prairie/Projects"
+depth = 10
