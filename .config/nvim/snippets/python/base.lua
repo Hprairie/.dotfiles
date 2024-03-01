@@ -10,7 +10,10 @@ local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 
 return {
-    s("hi",  -- LuaSnip expands this to {trig = "hi"}
-        { t("Hello, world!"), }
+    s({trig='compl', describe="Snippet for fast list comprehension."},
+        fmta(
+            [[[<> for <> in <>] ]],
+            {i(1), i(2), i(3)}
+        )
     ),
 }

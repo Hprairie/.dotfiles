@@ -17,9 +17,10 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'rust_analyzer', 'jedi_language_server', 'texlab', 'lua_ls'},
+  ensure_installed = {'rust_analyzer', 'pyright', 'pylint', 'texlab', 'lua_ls'},
   handlers = {
     lsp_zero.default_setup,
+    pylint = function() end,
     lua_ls = function()
         require('neodev').setup()
 
@@ -27,6 +28,16 @@ require('mason-lspconfig').setup({
         require('lspconfig').lua_ls.setup(lua_opts)
     end,
   }
+})
+
+local util = require("lspconfig/util")
+local lspconfig = require("lspconfig")
+
+lspconfig.pyright.setup({
+  root_dir = function(fname)
+    return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
+      util.path.dirname(fname)
+  end
 })
 
 local cmp = require('cmp')
