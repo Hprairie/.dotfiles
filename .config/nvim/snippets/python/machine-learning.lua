@@ -25,7 +25,7 @@ return {
         fmta(
             [[
             class <>(nn.Module):
-                def __init__(self, <>):
+                def __init__(self, <>) -> None:
                     super(<>, self).__init__()
                     <>
 

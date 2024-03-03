@@ -68,7 +68,9 @@ require("lazy").setup({
     -- Image loading in nvim
 
     ---------------- LaTeX -------------------
-
+    {"lervag/vimtex",
+        lazy = true,
+    },
 
     --------------- Formatting ----------------
     -- Python Pep-8
