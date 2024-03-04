@@ -1,1 +1,2 @@
-require("prairie")
+require('prairie.core')
+require('prairie.lazy')
