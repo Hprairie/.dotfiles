@@ -9,23 +9,24 @@ local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 
-
 return {
-    s({trig='pytorch:import', describe="Import Common PyTorch Functions."},
-        fmt(
-            [[
+	s(
+		{ trig = "pytorch:import", describe = "Import Common PyTorch Functions." },
+		fmt(
+			[[
               import torch
               import torch.nn as nn
               import torch.nn.functional as F
             ]],
-            {}
-        )
-    ),
-    s({trig='pytorch:module', describe="Create a Module class"},
-        fmta(
-            [[
+			{}
+		)
+	),
+	s(
+		{ trig = "pytorch:module", describe = "Create a Module class" },
+		fmta(
+			[[
             class <>(nn.Module):
-                def __init__(self, <>) -> None:
+                def __init__(self, <>):
                     super(<>, self).__init__()
                     <>
 
@@ -33,15 +34,16 @@ return {
                     <>
                     return x
             ]],
-            {i(1, "MyModule"), i(2, "args"), rep(1), i(3), i(4)}
-        )
-    ),
-    s({trig='pytorch:device', describe="Create the device object."},
-        fmta(
-            [[
+			{ i(1, "MyModule"), i(2, "args"), rep(1), i(3), i(4) }
+		)
+	),
+	s(
+		{ trig = "pytorch:device", describe = "Create the device object." },
+		fmta(
+			[[
             device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
             ]],
-            {}
-        )
-    ),
+			{}
+		)
+	),
 }

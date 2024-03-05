@@ -97,7 +97,7 @@ return {
 			lsp_zero.format_mapping("<leader>mm", {
 				format_opts = {
 					async = false,
-					timeout_ms = 10000,
+					timeout_ms = 100000,
 				},
 				servers = {
 					["null-ls"] = { "python", "lua", "latex" },
@@ -134,18 +134,17 @@ return {
 					-- You can add tools not supported by mason.nvim
 				},
 			})
-
 			-- See mason-null-ls.nvim's documentation for more details:
 			-- https://github.com/jay-babu/mason-null-ls.nvim#setup
 			require("mason-null-ls").setup({
-				ensure_installed = { "pylint", "black", "stylua" },
+				ensure_installed = { "pylint", "black", "stylua", "latexindent" },
 				automatic_installation = false, -- You can still set this to `true`
 				automatic_setup = true,
 				handlers = {},
 			})
 
 			-- Required when `automatic_setup` is true
-			--require('mason-null-ls').setup_handlers()
+			--require("mason-null-ls").setup_handlers()
 
 			-- Setup CMP
 			local cmp = require("cmp")
