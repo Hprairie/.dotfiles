@@ -1,5 +1,6 @@
 -- Leader Key Setup --
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 -- Explore Key Maps --
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
