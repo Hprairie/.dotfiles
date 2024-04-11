@@ -111,8 +111,10 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = { "rust_analyzer", "pyright", "texlab", "lua_ls" },
 				handlers = {
-					lsp_zero.default_setup,
-					pylint = function() end,
+					function(server_name) -- default handler (optional)
+						require("lspconfig")[server_name].setup({})
+					end,
+					--lsp_zero.default_setup,
 					lua_ls = function()
 						require("neodev").setup()
 
@@ -138,9 +140,8 @@ return {
 			-- https://github.com/jay-babu/mason-null-ls.nvim#setup
 			require("mason-null-ls").setup({
 				ensure_installed = { "pylint", "black", "stylua", "latexindent" },
-				automatic_installation = false, -- You can still set this to `true`
+				automatic_installation = true, -- You can still set this to `true`
 				automatic_setup = true,
-				handlers = {},
 			})
 
 			-- Required when `automatic_setup` is true
@@ -163,7 +164,7 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				completion = {
-					autocomplete = false,
+					autocomplete = { require("cmp.types").cmp.TriggerEvent.TextChanged },
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
