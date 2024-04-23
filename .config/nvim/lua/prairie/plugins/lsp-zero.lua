@@ -40,9 +40,16 @@ return {
 						store_selection_keys = "<Tab>",
 
 						update_events = "TextChanged,TextChangedI",
+
 					})
 
 					require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets/" })
+
+                    -- Set some keymaps
+			        local ls = require("luasnip")
+                    vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true})
+                    vim.keymap.set({"i", "s"}, "<C-L>", function() ls.jump( 1) end, {silent = true})
+                    vim.keymap.set({"i", "s"}, "<C-J>", function() ls.jump(-1) end, {silent = true})
 				end,
 			},
 		},
@@ -139,7 +146,7 @@ return {
 			-- See mason-null-ls.nvim's documentation for more details:
 			-- https://github.com/jay-babu/mason-null-ls.nvim#setup
 			require("mason-null-ls").setup({
-				ensure_installed = { "pylint", "black", "stylua", "latexindent" },
+				ensure_installed = { "pylint", "black", "stylua", "latexindent", "bash-language-server" },
 				automatic_installation = true, -- You can still set this to `true`
 				automatic_setup = true,
 			})

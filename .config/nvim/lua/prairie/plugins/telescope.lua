@@ -11,6 +11,8 @@ return {
 			vim.keymap.set("n", "<leader>fv", builtin.live_grep, {})
             vim.keymap.set("n", "<leader>fm", builtin.man_pages, {})
             vim.keymap.set("n", "<leader>fh", builtin.current_buffer_fuzzy_find, {})
+            vim.keymap.set("n", "<leader>fi", builtin.help_tags, {})
+            vim.keymap.set("n", "<leader>fk", builtin.keymaps, {})
 		end,
 	},
 }

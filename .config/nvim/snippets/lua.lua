@@ -29,10 +29,10 @@ return {
 		)
 	),
 	s(
-		{ trig = "snippet:new", describe = "Baseline template for a new snippet" },
+		{ trig = "snippet:new_block", describe = "Baseline template for a new snippet" },
 		fmta(
 			[[
-                s({trig='<>', describe="<>"},
+                s({trig = '<>', describe = "<>"},
                     fmta(
                         [[<><>,
                         {<>}
@@ -44,4 +44,14 @@ return {
 			end), i(4) }
 		)
 	),
+    s({trig = 'snippet:new_snippet', describe = "Small Baslien template for a new snippet" },
+        fmta(
+            [[
+                s({ trig = "<>", snippetType = "autosnippet" }, {
+                    t("<>"),
+                }),
+            ]],
+            { i(1), i(2) }
+        )
+    ),
 }
