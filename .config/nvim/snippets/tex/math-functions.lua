@@ -143,6 +143,7 @@ local auto_backslash_specs = {
 	"deg",
 	"angle",
 	"cdot",
+	"quad",
 	"to",
 	"in",
 }
