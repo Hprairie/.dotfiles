@@ -31,6 +31,7 @@ return {
 					{ "saadparwaiz1/cmp_luasnip" },
 				},
 				config = function()
+					local types = require("luasnip.util.types")
 					require("luasnip").config.set_config({ -- Setting LuaSnip config
 
 						-- Enable autotriggered snippets
@@ -41,15 +42,30 @@ return {
 
 						update_events = "TextChanged,TextChangedI",
 
+						ext_opts = {
+							[types.choiceNode] = {
+								active = { virt_text = { { "●", "Orange" } }, hl_mode = "combine" },
+							},
+						},
 					})
 
 					require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets/" })
 
-                    -- Set some keymaps
-			        local ls = require("luasnip")
-                    vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true})
-                    vim.keymap.set({"i", "s"}, "<C-L>", function() ls.jump( 1) end, {silent = true})
-                    vim.keymap.set({"i", "s"}, "<C-J>", function() ls.jump(-1) end, {silent = true})
+					-- Set some keymaps
+					local ls = require("luasnip")
+					vim.keymap.set({ "i" }, "<c-k>", function()
+						ls.expand()
+					end, { silent = true })
+					vim.keymap.set({ "i", "s" }, "<c-;>", function()
+						if ls.choice_active() then
+							ls.change_choice(1)
+						end
+					end)
+					vim.keymap.set({ "i", "s" }, "<c-h>", function()
+						if ls.choice_active() then
+							ls.change_choice(-1)
+						end
+					end)
 				end,
 			},
 		},
@@ -131,24 +147,20 @@ return {
 				},
 			})
 
-			-- Setup Null Ls
-			local null_ls = require("null-ls")
-			local null_opts = lsp_zero.build_options("null-ls", {})
-
-			null_ls.setup({
-				on_attach = function(client, bufnr)
-					null_opts.on_attach(client, bufnr)
-				end,
-				sources = {
-					-- You can add tools not supported by mason.nvim
-				},
-			})
 			-- See mason-null-ls.nvim's documentation for more details:
 			-- https://github.com/jay-babu/mason-null-ls.nvim#setup
 			require("mason-null-ls").setup({
-				ensure_installed = { "pylint", "black", "stylua", "latexindent", "bash-language-server" },
+				ensure_installed = { "flake8", "black", "stylua", "latexindent", "bash-language-server" },
 				automatic_installation = true, -- You can still set this to `true`
 				automatic_setup = true,
+				handlers = {},
+			})
+
+			-- Setup Null Ls
+			require("null-ls").setup({
+				sources = {
+					-- You can add tools not supported by mason.nvim
+				},
 			})
 
 			-- Required when `automatic_setup` is true
@@ -177,8 +189,8 @@ return {
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
 					["<Tab>"] = cmp_action.tab_complete(),
 					["<S-Tab>"] = cmp_action.select_prev_or_fallback(),
-					["<A-f>"] = cmp_action.luasnip_jump_forward(),
-					["<A-b>"] = cmp_action.luasnip_jump_backward(),
+					["<c-l>"] = cmp_action.luasnip_jump_forward(),
+					["<c-j>"] = cmp_action.luasnip_jump_backward(),
 					["<c-b>"] = cmp.mapping.scroll_docs(-4),
 					["<c-f>"] = cmp.mapping.scroll_docs(4),
 					["<c-n>"] = function()

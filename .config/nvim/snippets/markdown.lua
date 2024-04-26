@@ -30,7 +30,7 @@ return {
         t("$\\eta$"),
     }),
     s({ trig = ";z", snippetType = "autosnippet" }, {
-        t("$\\eta$"),
+        t("$\\zeta$"),
     }),
     s({ trig = ";t", snippetType = "autosnippet" }, {
         t("$\\theta$"),
