@@ -146,11 +146,10 @@ return {
 					end,
 				},
 			})
-
 			-- See mason-null-ls.nvim's documentation for more details:
 			-- https://github.com/jay-babu/mason-null-ls.nvim#setup
 			require("mason-null-ls").setup({
-				ensure_installed = { "flake8", "black", "stylua", "latexindent", "bash-language-server" },
+				ensure_installed = { "flake8", "black", "stylua", "latexindent", "bash-language-server", "chktex" },
 				automatic_installation = true, -- You can still set this to `true`
 				automatic_setup = true,
 				handlers = {},

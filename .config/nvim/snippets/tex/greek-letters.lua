@@ -18,67 +18,67 @@ end
 
 return {
 	-- Greek Letter ZOOM (No math mode)
-	s({ trig = ";a", snippetType = "autosnippet" }, {
+	s({ trig = "alpha", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "alpha" } }),
 	}),
-	s({ trig = ";b", snippetType = "autosnippet" }, {
+	s({ trig = "beta", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "beta" } }),
 	}),
-	s({ trig = ";g", snippetType = "autosnippet" }, {
+	s({ trig = "gamma", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "gamma" } }),
 	}),
-	s({ trig = ";d", snippetType = "autosnippet" }, {
+	s({ trig = "delta", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "delta" } }),
 	}),
-	s({ trig = ";ep", snippetType = "autosnippet" }, {
+	s({ trig = "epsilon", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "epsilon" } }),
 	}),
-	s({ trig = ";et", snippetType = "autosnippet" }, {
+	s({ trig = "eta", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "eta" } }),
 	}),
-	s({ trig = ";z", snippetType = "autosnippet" }, {
+	s({ trig = "zeta", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "zeta" } }),
 	}),
-	s({ trig = ";t", snippetType = "autosnippet" }, {
+	s({ trig = "theta", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "theta" } }),
 	}),
-	s({ trig = ";k", snippetType = "autosnippet" }, {
+	s({ trig = "kappa", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "kappa" } }),
 	}),
-	s({ trig = ";l", snippetType = "autosnippet" }, {
+	s({ trig = "lambda", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "lambda" } }),
 	}),
-	s({ trig = ";m", snippetType = "autosnippet" }, {
+	s({ trig = "mu", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "mu" } }),
 	}),
-	s({ trig = ";n", snippetType = "autosnippet" }, {
+	s({ trig = "nu", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "nu" } }),
 	}),
-	s({ trig = ";x", snippetType = "autosnippet" }, {
+	s({ trig = "xi", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "xi" } }),
 	}),
-	s({ trig = ";pi", snippetType = "autosnippet" }, {
+	s({ trig = "pi", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "pi" } }),
 	}),
-	s({ trig = ";r", snippetType = "autosnippet" }, {
+	s({ trig = "rho", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "rho" } }),
 	}),
-	s({ trig = ";s", snippetType = "autosnippet" }, {
+	s({ trig = "sigma", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "sigma" } }),
 	}),
-	s({ trig = ";t", snippetType = "autosnippet" }, {
+	s({ trig = "tau", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "tau" } }),
 	}),
-	s({ trig = ";ph", snippetType = "autosnippet" }, {
+	s({ trig = "phi", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "phi" } }),
 	}),
-	s({ trig = ";ps", snippetType = "autosnippet" }, {
+	s({ trig = "psi", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "psi" } }),
 	}),
-	s({ trig = ";c", snippetType = "autosnippet" }, {
+	s({ trig = "chi", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "chi" } }),
 	}),
-	s({ trig = ";o", snippetType = "autosnippet" }, {
+	s({ trig = "omega", snippetType = "autosnippet" }, {
 		f(is_math, {}, { user_args = { "omega" } }),
 	}),
 }

@@ -46,15 +46,15 @@ SNIPPET_MATH = {
 	-- Blocks
 	s(
 		{
-			trig = "eq",
+			trig = "al",
 			describe = "Creates an equation block",
 			snippetType = "autosnippet",
 		},
 		fmta(
 			[[
-            \begin{equation<>}
+            \begin{align<>}
                 <>
-            \end{equation<>}
+            \end{align<>}
             ]],
 			{ c(1, { t("*"), t("") }), i(2), rep(1) }
 		),
@@ -69,6 +69,11 @@ SNIPPET_MATH = {
 	s(
 		{ trig = "prod", name = "product", dscr = "product", snippetType = "autosnippet" },
 		fmta([[\prod<> <>]], { c(1, { fmta([[_{<>}^{<>}]], { i(1, "i = 0"), i(2, "\\infty") }), t("") }), i(0) }),
+		{ condition = is_math, show_condition = is_math }
+	),
+	s(
+		{ trig = "int", name = "integral", dscr = "integral", snippetType = "autosnippet" },
+		fmta([[\int<> <>]], { c(1, { t(""), fmta([[_{<>}^{<>}]], { i(1, "-\\infty"), i(2, "\\infty") }) }), i(0) }),
 		{ condition = is_math, show_condition = is_math }
 	),
 	s(
@@ -110,11 +115,18 @@ SNIPPET_MATH = {
 		{ condition = is_math, show_condition = is_math }
 	),
 	s(
-		{ trig = "fp", describe = "Creates a derivative fraction snippet", snippetType = "autosnippet" },
+		{ trig = "fp", describe = "Creates a partial derivative fraction snippet", snippetType = "autosnippet" },
 		fmta([[\frac{\partial <>}{\partial <>}<>]], { i(1), i(2), i(0) }),
 		{ condition = is_math, show_condition = is_math }
 	),
 	-- Symbols with auto backslash
+
+	-- Additional Symbols
+	s(
+		{ trig = "sq", describe = "Creates a sqrt function", snippetType = "autosnippet" },
+		fmta([[\sqrt<><>]], { c(1, { fmta([[{<>}]], { i(1, "") }), fmta([[[<>]{<>}]], { i(1, "2"), i(2) }) }), i(0) }),
+		{ condition = is_math, show_condition = is_math }
+	),
 }
 
 local auto_backslash_specs = {
@@ -145,7 +157,7 @@ local auto_backslash_specs = {
 	"cdot",
 	"quad",
 	"to",
-	"in",
+	--"in",
 }
 
 local auto_backslash_snippets = {}
